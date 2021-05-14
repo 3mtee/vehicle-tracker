@@ -1,12 +1,16 @@
 package org.painsomnia.vehicletracker.dto;
 
-import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
-@Builder(setterPrefix = "with")
 public class VehicleDto {
     private String vin;
     private String licensePlate;
-    private GeoPointDto lastLocation;
+    private List<GeoPointDto> geoPoints = new ArrayList<>();
+    private LocalDateTime createDate;
+    private LocalDateTime updateDate;
 }

@@ -1,5 +1,9 @@
 package org.painsomnia.vehicletracker.service;
 
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.painsomnia.vehicletracker.dto.VehicleDto;
+import org.painsomnia.vehicletracker.dto.VehicleListDto;
 import org.painsomnia.vehicletracker.po.Vehicle;
 import org.painsomnia.vehicletracker.repository.VehicleRepository;
 import org.springframework.stereotype.Service;
@@ -10,14 +14,17 @@ import java.util.List;
 public class VehicleService {
 
     private final VehicleRepository vehicleRepository;
+    private final ModelMapper modelMapper;
 
-    public VehicleService(VehicleRepository vehicleRepository) {
+    public VehicleService(VehicleRepository vehicleRepository, ModelMapper modelMapper) {
         this.vehicleRepository = vehicleRepository;
+        this.modelMapper = modelMapper;
     }
 
-    public List<Vehicle> findAll() {
-        // todo: convert to dto
-        return vehicleRepository.findAll();
+    public List<VehicleListDto> findAll() {
+        final List<Vehicle> vehicles = vehicleRepository.findAll();
+        return modelMapper.map(vehicles, new TypeToken<List<VehicleListDto>>() {
+        }.getType());
     }
 
     // todo: consider pulling up
@@ -27,5 +34,10 @@ public class VehicleService {
 
     public long countEntities() {
         return vehicleRepository.count();
+    }
+
+    public VehicleDto getByVin(String vin) {
+        final Vehicle vehicle = vehicleRepository.getByVin(vin);
+        return modelMapper.map(vehicle, VehicleDto.class);
     }
 }

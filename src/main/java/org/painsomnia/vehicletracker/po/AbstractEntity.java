@@ -1,5 +1,6 @@
 package org.painsomnia.vehicletracker.po;
 
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Data
 @MappedSuperclass
 public abstract class AbstractEntity {
 

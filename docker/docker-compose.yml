@@ -12,13 +12,13 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - vt-pgdata:/var/lib/postgresql/data
       - ./pg-entrypoint:/docker-entrypoint-initdb.d
     networks:
       - network
 
 volumes:
-  pgdata:
+  vt-pgdata:
     driver: local
 
 networks:
