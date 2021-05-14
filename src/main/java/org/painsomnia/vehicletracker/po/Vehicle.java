@@ -1,24 +1,20 @@
 package org.painsomnia.vehicletracker.po;
 
-import org.hibernate.annotations.GenericGenerator;
+import lombok.Data;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.UUID;
+import javax.persistence.OneToMany;
+import java.util.List;
 
-@Entity
-public class Vehicle {
-    @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private UUID id;
-
+@javax.persistence.Entity
+@Data
+public class Vehicle extends MutableEntity {
     @Column(unique = true, nullable = false)
     private String vin;
 
     @Column(unique = true, nullable = false)
     private String licensePlate;
 
+    @OneToMany(mappedBy = "vehicle")
+    private List<GeoPoint> geoPoints;
 }
