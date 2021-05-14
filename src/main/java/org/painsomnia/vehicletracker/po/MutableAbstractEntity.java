@@ -5,7 +5,7 @@ import javax.persistence.PreUpdate;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
-public abstract class MutableEntity extends Entity {
+public abstract class MutableAbstractEntity extends AbstractEntity {
 
     protected LocalDateTime updateDate = LocalDateTime.now();
 

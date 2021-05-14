@@ -19,4 +19,13 @@ public class VehicleService {
         // todo: convert to dto
         return vehicleRepository.findAll();
     }
+
+    // todo: consider pulling up
+    public List<Vehicle> saveAll(Iterable<Vehicle> vehicles) {
+        return vehicleRepository.saveAll(vehicles);
+    }
+
+    public long countEntities() {
+        return vehicleRepository.count();
+    }
 }

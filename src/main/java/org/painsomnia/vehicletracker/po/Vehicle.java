@@ -3,12 +3,13 @@ package org.painsomnia.vehicletracker.po;
 import lombok.Data;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.List;
 
-@javax.persistence.Entity
+@Entity
 @Data
-public class Vehicle extends MutableEntity {
+public class Vehicle extends MutableAbstractEntity {
     @Column(unique = true, nullable = false)
     private String vin;
 

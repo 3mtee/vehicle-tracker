@@ -3,12 +3,13 @@ package org.painsomnia.vehicletracker.po;
 import lombok.Data;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@javax.persistence.Entity
+@Entity
 @Data
-public class GeoPoint extends Entity {
+public class GeoPoint extends AbstractEntity {
 
     //todo: add validation
     @Column(nullable = false, columnDefinition = "decimal(8,6)")
