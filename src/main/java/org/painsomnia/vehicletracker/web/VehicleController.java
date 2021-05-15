@@ -38,6 +38,12 @@ public class VehicleController {
         return vehicleService.listFull();
     }
 
+    @GetMapping("fail")
+    @ApiOperation("A test endpoint with a sole purpose of failing")
+    public String fail() {
+        throw new RuntimeException("oopsie-doopsie");
+    }
+
     @PostMapping("gps")
     @ApiOperation("Register vehicle location")
     public VehicleDto registerVehiclePosition(@RequestBody GeoPointDto point) {
