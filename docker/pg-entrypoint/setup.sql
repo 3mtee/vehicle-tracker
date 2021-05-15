@@ -18,20 +18,17 @@ vin           varchar(255) not null
 alter table vehicle
     owner to postgres;
 
--- auto-generated definition
 create table geo_point
 (
-id          uuid          not null
+id          uuid not null
     constraint geo_point_pkey
         primary key,
 create_date timestamp,
-latitude    numeric(8, 6) not null,
-longitude   numeric(9, 6) not null,
-vehicle_id  uuid          not null
+point       geometry,
+vehicle_id  uuid not null
     constraint fk1ld421fed680m8cmby80y79r9
         references vehicle
 );
 
 alter table geo_point
     owner to postgres;
-
