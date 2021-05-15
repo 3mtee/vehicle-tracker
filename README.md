@@ -17,7 +17,7 @@ Available at http://localhost:8080/swagger-ui/
 1. Set your servers to use the UTC timezone
 
 ## TODO
-1.    todo: address n+1
-1.    todo: add integration tests
-1.    todo: introduce a changelog
-1.    todo: add web error handling
+1. todo: address n+1
+1. todo: add integration tests
+1. todo: introduce a changelog
+1. todo: implement search logic 

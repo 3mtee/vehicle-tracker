@@ -7,6 +7,7 @@ import org.painsomnia.vehicletracker.dto.VehicleListDto;
 import org.painsomnia.vehicletracker.service.VehicleService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,7 +34,7 @@ public class VehicleController {
 
     @PostMapping("by-geofence")
     @ApiOperation("Find all vehicles using geofence")
-    public List<VehicleDto> findGeofenceVehicles(@RequestBody List<GeoPointDto> geofence) {
+    public List<VehicleDto> findGeofenceVehicles(@Valid @RequestBody List<GeoPointDto> geofence) {
 //        todo: implement properly
         return vehicleService.listFull();
     }
@@ -46,7 +47,7 @@ public class VehicleController {
 
     @PostMapping("gps")
     @ApiOperation("Register vehicle location")
-    public VehicleDto registerVehiclePosition(@RequestBody GeoPointDto point) {
+    public VehicleDto registerVehiclePosition(@Valid @RequestBody GeoPointDto point) {
         return vehicleService.registerVehiclePosition(point);
     }
 }
