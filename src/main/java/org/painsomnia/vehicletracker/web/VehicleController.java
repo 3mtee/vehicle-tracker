@@ -1,12 +1,10 @@
 package org.painsomnia.vehicletracker.web;
 
+import org.painsomnia.vehicletracker.dto.GeoPointDto;
 import org.painsomnia.vehicletracker.dto.VehicleDto;
 import org.painsomnia.vehicletracker.dto.VehicleListDto;
 import org.painsomnia.vehicletracker.service.VehicleService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,11 +20,22 @@ public class VehicleController {
 
     @GetMapping
     public List<VehicleListDto> list() {
-        return vehicleService.findAll();
+        return vehicleService.list();
     }
 
     @GetMapping("by-vin/{vin}")
     public VehicleDto getByVin(@PathVariable String vin) {
         return vehicleService.getByVin(vin);
+    }
+
+    @PostMapping("by-geofence")
+    public List<VehicleDto> findGeofenceVehicles(@RequestBody List<GeoPointDto> geofence) {
+//        todo: implement properly
+        return vehicleService.listFull();
+    }
+
+    @PostMapping("gps")
+    public VehicleDto registerVehiclePosition(@RequestBody GeoPointDto point) {
+        return vehicleService.registerVehiclePosition(point);
     }
 }

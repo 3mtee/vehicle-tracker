@@ -20,4 +20,8 @@ public class Vehicle extends MutableAbstractEntity {
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
     private List<GeoPoint> geoPoints = new ArrayList<>();
+
+    public boolean addGeoPoint(double lat, double lon) {
+        return this.getGeoPoints().add(new GeoPoint(lat, lon, this));
+    }
 }
