@@ -37,6 +37,7 @@ dependencies {
     implementation "org.modelmapper:modelmapper:$modelMapperVersion"
     implementation "io.springfox:springfox-boot-starter:$swaggerVersion"
     implementation "io.springfox:springfox-swagger-ui:$swaggerVersion"
+    implementation "org.hibernate:hibernate-spatial:$hibernateVersion"
 }
 
 test {

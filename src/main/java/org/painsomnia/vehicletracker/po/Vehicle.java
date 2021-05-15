@@ -1,6 +1,8 @@
 package org.painsomnia.vehicletracker.po;
 
 import lombok.Data;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Point;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,7 +23,7 @@ public class Vehicle extends MutableAbstractEntity {
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
     private List<GeoPoint> geoPoints = new ArrayList<>();
 
-    public boolean addGeoPoint(double lat, double lon) {
-        return this.getGeoPoints().add(new GeoPoint(lat, lon, this));
+    public boolean addGeoPoint(Point<G2D> point) {
+        return this.getGeoPoints().add(new GeoPoint(point, this));
     }
 }

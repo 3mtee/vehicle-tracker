@@ -3,8 +3,9 @@ package org.painsomnia.vehicletracker.po;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Point;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,13 +16,7 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class GeoPoint extends AbstractEntity {
 
-    //todo: add validation
-    @Column(nullable = false, columnDefinition = "decimal(8,6)")
-    private double latitude;
-
-    //todo: add validation
-    @Column(nullable = false, columnDefinition = "decimal(9,6)")
-    private double longitude;
+    private Point<G2D> point;
 
     @ManyToOne
     @JoinColumn(name = "vehicle_id", nullable = false)

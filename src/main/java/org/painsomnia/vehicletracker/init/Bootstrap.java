@@ -1,6 +1,8 @@
 package org.painsomnia.vehicletracker.init;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Point;
 import org.painsomnia.vehicletracker.po.GeoPoint;
 import org.painsomnia.vehicletracker.po.Vehicle;
 import org.painsomnia.vehicletracker.service.VehicleService;
@@ -9,6 +11,10 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.geolatte.geom.builder.DSL.g;
+import static org.geolatte.geom.builder.DSL.point;
+import static org.geolatte.geom.crs.CoordinateReferenceSystems.WGS84;
 
 @Component
 public class Bootstrap {
@@ -42,8 +48,11 @@ public class Bootstrap {
         final Vehicle vehicle = new Vehicle();
         vehicle.setVin(vin);
         vehicle.setLicensePlate(RandomStringUtils.random(5, true, true));
-        final GeoPoint geoPoint = new GeoPoint();
-        geoPoint.setVehicle(vehicle);
+        final double lat = (Math.random() * 180.0) - 90.0;
+        final double lon = (Math.random() * 360.0) - 180.0;
+
+        final Point<G2D> point = point(WGS84, g(lon, lat));
+        final GeoPoint geoPoint = new GeoPoint(point, vehicle);
         vehicle.getGeoPoints().add(geoPoint);
         return vehicle;
     }

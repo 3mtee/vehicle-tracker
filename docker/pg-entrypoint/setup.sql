@@ -1,3 +1,5 @@
+CREATE EXTENSION postgis;
+
 create table vehicle
 (
 id            uuid         not null
