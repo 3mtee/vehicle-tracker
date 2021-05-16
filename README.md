@@ -15,9 +15,9 @@ Available at http://localhost:8080/swagger-ui/
   
 ## Things to consider:
 1. Set your servers to use the UTC timezone
+1. Introduce `liquibase`
 
 ## TODO
-1. todo: address n+1
-1. todo: add integration tests
-1. todo: introduce a changelog
-1. todo: implement search logic 
+1. add integration tests
+1. add slf4j + logback
+1. address n+1

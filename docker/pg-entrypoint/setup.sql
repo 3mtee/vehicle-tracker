@@ -32,3 +32,7 @@ vehicle_id  uuid not null
 
 alter table geo_point
     owner to postgres;
+
+CREATE INDEX geo_point_point_idx
+    ON geo_point
+        USING GIST (point);

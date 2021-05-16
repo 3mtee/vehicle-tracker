@@ -34,9 +34,8 @@ public class VehicleController {
 
     @PostMapping("by-geofence")
     @ApiOperation("Find all vehicles using geofence")
-    public List<VehicleDto> findGeofenceVehicles(@Valid @RequestBody List<GeoPointDto> geofence) {
-//        todo: implement properly
-        return vehicleService.listFull();
+    public Object findGeofenceVehicles(@Valid @RequestBody List<GeoPointDto> geofence) {
+        return vehicleService.findVehiclesInRectangle(geofence);
     }
 
     @GetMapping("fail")
