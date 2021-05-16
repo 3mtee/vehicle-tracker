@@ -2,6 +2,7 @@ package org.painsomnia.vehicletracker.web;
 
 import io.swagger.annotations.ApiOperation;
 import org.painsomnia.vehicletracker.dto.GeoPointDto;
+import org.painsomnia.vehicletracker.dto.SearchInputDto;
 import org.painsomnia.vehicletracker.dto.VehicleDto;
 import org.painsomnia.vehicletracker.dto.VehicleListDto;
 import org.painsomnia.vehicletracker.service.VehicleService;
@@ -33,9 +34,9 @@ public class VehicleController {
     }
 
     @PostMapping("by-geofence")
-    @ApiOperation("Find all vehicles using geofence")
-    public Object findGeofenceVehicles(@Valid @RequestBody List<GeoPointDto> geofence) {
-        return vehicleService.findVehiclesInRectangle(geofence);
+    @ApiOperation("Find all vehicles using rectangle geofence")
+    public List<VehicleDto> findGeofenceVehicles(@Valid @RequestBody SearchInputDto input) {
+        return vehicleService.findVehiclesInRectangle(input);
     }
 
     @GetMapping("fail")

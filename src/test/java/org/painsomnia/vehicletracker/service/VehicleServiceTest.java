@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.painsomnia.vehicletracker.config.AppConfig;
 import org.painsomnia.vehicletracker.dto.GeoPointDto;
+import org.painsomnia.vehicletracker.dto.SearchInputDto;
 import org.painsomnia.vehicletracker.dto.VehicleDto;
 import org.painsomnia.vehicletracker.po.GeoPoint;
 import org.painsomnia.vehicletracker.po.Vehicle;
 import org.painsomnia.vehicletracker.repository.VehicleRepository;
 import org.springframework.data.domain.PageImpl;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,10 +31,9 @@ class VehicleServiceTest {
 
     @Test
     void testFindVehiclesInRectangle() {
-        final List<GeoPointDto> geofence = Arrays.asList(
-                new GeoPointDto().setLat(-89).setLon(-89),
-                new GeoPointDto().setLat(89).setLon(89)
-        );
+        final SearchInputDto geofence = new SearchInputDto()
+                .setPointOne(new GeoPointDto().setLat(-89).setLon(-89))
+                .setPointTwo(new GeoPointDto().setLat(89).setLon(89));
 
         final Vehicle expected = new Vehicle();
         expected.setVin("12345");

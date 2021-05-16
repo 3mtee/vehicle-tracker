@@ -6,6 +6,7 @@ import org.geolatte.geom.Polygon;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.painsomnia.vehicletracker.dto.GeoPointDto;
+import org.painsomnia.vehicletracker.dto.SearchInputDto;
 import org.painsomnia.vehicletracker.dto.VehicleDto;
 import org.painsomnia.vehicletracker.dto.VehicleListDto;
 import org.painsomnia.vehicletracker.po.Vehicle;
@@ -58,9 +59,9 @@ public class VehicleService {
         return modelMapper.map(vehicle, VehicleDto.class);
     }
 
-    public List<VehicleDto> findVehiclesInRectangle(List<GeoPointDto> geofence) {
-        final GeoPointDto geo0 = geofence.get(0);
-        final GeoPointDto geo1 = geofence.get(1);
+    public List<VehicleDto> findVehiclesInRectangle(SearchInputDto geofence) {
+        final GeoPointDto geo0 = geofence.getPointOne();
+        final GeoPointDto geo1 = geofence.getPointTwo();
 
         final double lon1 = geo0.getLon();
         final double lat1 = geo0.getLat();
