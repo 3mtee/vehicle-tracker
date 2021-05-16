@@ -24,4 +24,3 @@ Available at http://localhost:8080/swagger-ui/
 1. address n+1
 1. add integration tests
 1. Introduce `liquibase`
-1. Make possible changing spring profiles using JVM args

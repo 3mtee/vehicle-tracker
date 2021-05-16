@@ -1,6 +1,7 @@
 package org.painsomnia.vehicletracker.web;
 
 import org.painsomnia.vehicletracker.dto.ErrorDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,6 +19,6 @@ public class ErrorController {
                 .map(StackTraceElement::toString)
                 .collect(Collectors.toList());
         final ErrorDto error = new ErrorDto(exception.getMessage(), stacktrace);
-        return ResponseEntity.status(500).body(error);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
     }
 }
