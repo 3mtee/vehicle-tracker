@@ -10,6 +10,10 @@ The task is to create a RESTful web service that will:
 - On request return the list of vehicles that are located within a given rectangle on the map. The rectangle coordinates
   are provided as the request params
   
+## Running the app
+1. Start a pg in docker `docker compose -f docker/docker-compose.yml up`
+1. Run VehicleTrackerApplication in your IDE or `./gradlew bootRun` in the terminal
+
 ## Swagger UI
 Available at http://localhost:8080/swagger-ui/
   
@@ -20,3 +24,4 @@ Available at http://localhost:8080/swagger-ui/
 1. address n+1
 1. add integration tests
 1. Introduce `liquibase`
+1. Make possible changing spring profiles using JVM args
